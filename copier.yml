@@ -1,0 +1,43 @@
+project_name:
+  type: str
+  help: What is your project name?
+
+background:
+  type: bool
+  help: With background?
+  default: false
+
+content:
+  type: bool
+  help: With content?
+  default: false
+
+inject:
+  type: bool
+  help: With inject?
+  default: false
+
+devtools:
+  type: bool
+  help: With devtools?
+  default: false
+
+newtab:
+  type: bool
+  help: With newtab?
+  default: false
+
+options:
+  type: bool
+  help: With options?
+  default: false
+
+panel:
+  type: bool
+  help: With panel?
+  default: false
+
+popup:
+  type: bool
+  help: With popup?
+  default: false

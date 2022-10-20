@@ -6,29 +6,32 @@ const manifest: ManifestType = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  options_page: "src/pages/options/index.html",
-  background: { service_worker: "src/pages/background/index.js" },
-  action: {
+  {% if options%}options_page: "src/pages/options/index.html",{% endif %}
+  {% if background%}background: { service_worker: "src/pages/background/index.js" },{% endif %}
+  {% if popup%} action: {
     default_popup: "src/pages/popup/index.html",
     default_icon: "icon-34.png",
-  },
-  chrome_url_overrides: {
+  },{% endif %}
+  {% if newtab%}chrome_url_overrides: {
     newtab: "src/pages/newtab/index.html",
-  },
+  },{% endif %}
   icons: {
     "128": "icon-128.png",
   },
-  content_scripts: [
+  {% if content%}content_scripts: [
     {
+      all_frames: true,
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
       js: ["src/pages/content/index.js"],
       css: ["assets/css/contentStyle.chunk.css"],
     },
-  ],
-  devtools_page: "src/pages/devtools/index.html",
+  ],{% endif %}
+  {% if devtools%}devtools_page: "src/pages/devtools/index.html",{% endif %}
   web_accessible_resources: [
     {
       resources: [
+        "src/pages/content_inject/*.js",
+        "src/pages/content_inject/*.map",
         "assets/js/*.js",
         "assets/css/*.css",
         "icon-128.png",

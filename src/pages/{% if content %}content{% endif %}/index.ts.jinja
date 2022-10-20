@@ -1,0 +1,20 @@
+{% if inject%}
+var link = document.createElement("link");
+link.href = chrome.runtime.getURL('assets/css/content_injectIndex.chunk.css');
+link.type = "text/css";
+link.rel = "stylesheet";
+document.head.appendChild(link);
+
+var script = document.createElement('script');
+script.setAttribute('type', 'text/javascript');
+script.src = chrome.runtime.getURL('src/pages/content_inject/index.js');
+document.head.appendChild(script);
+{% endif %}
+
+console.log("content loaded");
+
+/**
+ * @description
+ * Chrome extensions don't support modules in content scripts.
+ */
+import("./components/Demo");

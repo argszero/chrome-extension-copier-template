@@ -1,3 +1,4 @@
+{% if panel %}
 try {
   chrome.devtools.panels.create(
     "Dev Tools",
@@ -7,3 +8,4 @@ try {
 } catch (e) {
   console.error(e);
 }
+{% endif %}
